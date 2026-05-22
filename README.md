@@ -5,7 +5,7 @@ A comparison of traditional Actuarial methods against Machine Learning methods i
 
 ## Motivation
 
-A core component of life insurance pricing, annuity valuation and pensionfund management comes from mortality modelling, where the industry standard for decades have been actuarial models such as Lee-carter (1992) and the Cairns-Blade-Dowd model (CBD model, 2006). This study aims to compare these traditional models to the machine learning methods that have been on the rise during recent years, answering the question: **Can modern ML methods outperform the models built on decades of actuarial intuition?**
+A core component of life insurance pricing, annuity valuation and pensionfund management comes from mortality modelling, where the industry standard for decades have been actuarial models such as Lee-carter (1992) and the Cairns-Blake-Dowd model (CBD model, 2006). This study aims to compare these traditional models to the machine learning methods that have been on the rise during recent years, answering the question: **Can modern ML methods outperform the models built on decades of actuarial intuition?**
 
 This project compares the Lee-Carter, CBD models to ML methods XGBoost and Neural Networks on an out of sample forecasting task. Then, a hybrid model was constructed, combining the strengths of both actuarial and machine learning approaches.
 
@@ -60,7 +60,7 @@ Out-of-sample performance (2001–2021):
 | Hybrid (cutoff=45) | 0.1037 | 0.1567 | 0–100 |
 | Hybrid (cutoff=55) | 0.1205 | 0.1687 | 0–100 |
 
-The best hybrid model achieves a **57% reduction in MAE** versus Lee-Carter alone.
+The best hybrid model achieves a **58% reduction in MAE** versus Lee-Carter alone.
 
 ### Error by Age
 
@@ -89,6 +89,16 @@ prediction(x) = (1 - weight_nn) * LC_pred + weight_nn * NN_pred
 This produces a smooth continuous mortality curve that naturally transitions from Lee-Carter at young ages to Neural Network at older ages — combining actuarial interpretability with ML predictive power.
 
 The optimal cutoff at age 40 performs best, consistent with the error-by-age analysis showing the Neural Network begins outperforming Lee-Carter at around age 30–40. This represents a **58% reduction in MAE** versus Lee-Carter alone.
+
+---
+
+### Hybrid Model Visualisations
+
+**Sigmoid blend weights and prediction error by age:**
+
+![Hybrid Weights and Error](results/Sigmoid%20Weight%20curves%20+%20Error%20by%20Age%20hybrid.png)
+
+The left panel shows how each cutoff transitions between models. The right panel shows the practical effect — all hybrid models eliminate the large Lee-Carter error spike at ages 55–85, while cutoff=40 best preserves Lee-Carter's advantage at the accident hump (ages 15–25).
 
 ---
 
