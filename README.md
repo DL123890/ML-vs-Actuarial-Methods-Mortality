@@ -124,7 +124,7 @@ README.md
 
 ```bash
 # clone the repo
-git clone https://github.com/yourusername/ML-vs-Actuarial-Methods-Mortality.git
+git clone https://github.com/DL123890/ML-vs-Actuarial-Methods-Mortality.git
 cd ML-vs-Actuarial-Methods-Mortality
 
 # create virtual environment
